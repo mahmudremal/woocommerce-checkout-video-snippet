@@ -1,8 +1,11 @@
+import videojs from 'video.js';
+
 ( function ( $ ) {
 	class FWPListivoBackendJS {
 		constructor() {
 			this.mediaUploader();
 			this.ajaxComplete();
+			this.videojs();
 		}
 		mediaUploader() {
 			// on upload button click
@@ -75,6 +78,26 @@
 				}
 			});
 		}
+    videojs() {
+      const thisClass = this;var theInterval, selector, players, css, js, csses, jses;
+      thisClass.videoPlayers = [];thisClass.videoRecorders = [];
+      selector = 'fwp-videojs-playing-field';
+      theInterval = setInterval( () => {
+				players = document.querySelectorAll( '.' + selector + ':not([data-handled])' );
+				players.forEach( ( e, i ) => {
+					if( ! e.id ) {e.id = selector + '-' + i;}e.dataset.handled = true;
+					thisClass.videoPlayers.push( { id: e.id, i: i, player: videojs( e.id )} );
+				} );
+			}, 2000 );
+      // document.querySelectorAll( 'fwp-videojs-record-field' ).forEach( ( e, i ) => {
+      //   if( ! e.id ) {e.id = 'fwp-videojs-record-field-' + i;}
+      //   thisClass.videoRecorders.push( { id: e.id, i: i, recorder: videojs( e.id )} );
+      // } );
+      csses = [ '//cdnjs.cloudflare.com/ajax/libs/video.js/7.5.5/video-js.min.css' ];
+      csses.forEach( ( src ) => {
+        css = document.createElement( 'link' );css.rel = 'stylesheet';css.href = src;document.head.appendChild( css );
+      } );
+    }
 	}
 
 	new FWPListivoBackendJS();

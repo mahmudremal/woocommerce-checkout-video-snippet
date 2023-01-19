@@ -1,8 +1,8 @@
 ( function ( $ ) {
 	class FWProject_Notice {
 		constructor() {
-			this.ajaxUrl = FWPsiteConfig?.ajaxUrl ?? '';
-			this.ajaxNonce = FWPsiteConfig?.ajax_nonce ?? '';
+			this.ajaxUrl = fwpSiteConfig?.ajaxUrl ?? '';
+			this.ajaxNonce = fwpSiteConfig?.ajax_nonce ?? '';
       this.notice();
 			// 01775898205
 			// Best Friend

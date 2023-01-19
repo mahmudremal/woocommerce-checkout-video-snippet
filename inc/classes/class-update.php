@@ -5,9 +5,12 @@
  * @package FWPWooCheckoutVideo
  */
 
-namespace FWPWOOCHECKOUT_PROJECT\Inc;
-use WP_Widget;
-use FWPWOOCHECKOUT_PROJECT\Inc\Traits\Singleton;
+// use WP_Widget;
+
+namespace FWPWOOCHECKOUT_THEME\Inc;
+
+use FWPWOOCHECKOUT_THEME\Inc\Traits\Singleton;
+
 class Update {
 	use Singleton;
   private $file;
@@ -19,9 +22,9 @@ class Update {
   private $authorize_token;
   private $github_response;
   public function __construct() {
-    $this->init();
+    $this->setup_hooks();
 	}
-  private function init() {
+  private function setup_hooks() {
     $this->file = FWPWOOCHECKOUT_PROJECT__FILE__;
     add_action( 'admin_init', array( $this, 'set_plugin_properties' ) );
   }
@@ -30,7 +33,7 @@ class Update {
 		$this->basename = plugin_basename( $this->file );
 		$this->active	= is_plugin_active( $this->basename );
     $this->set_username( 'mahmudremal' );
-    $this->set_repository( 'c4trade-listivo-directory-listing-project' );
+    $this->set_repository( 'woocommerce-checkout-video-snippet' );
     $this->authorize( false );
     $this->initialize();
 	}

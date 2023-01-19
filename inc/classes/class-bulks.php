@@ -17,9 +17,9 @@ class Bulks {
 			'cpt'			=> 'listivo_listing',
 			'column'	=> 'status',
 			'options'	=> [
-				''       => __( 'All', 'domain' ),
-				'open'   => __( 'Open', 'domain' ),
-				'closed' => __( 'Closed', 'domain' ),
+				''       => __( 'All', 'woocommerce-checkout-video-snippet' ),
+				'open'   => __( 'Open', 'woocommerce-checkout-video-snippet' ),
+				'closed' => __( 'Closed', 'woocommerce-checkout-video-snippet' ),
 			]
 		];
 		/**
@@ -44,7 +44,7 @@ class Bulks {
 	 */
 	public function manage_posts_columns( $columns ) {
 		$columns = (array) $columns;
-		$columns[ $this->args[ 'column' ] ] = __( 'Status', 'domain' );
+		$columns[ $this->args[ 'column' ] ] = __( 'Status', 'woocommerce-checkout-video-snippet' );
 		return $columns;
 	}
 	/**

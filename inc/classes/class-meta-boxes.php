@@ -28,7 +28,7 @@ class Meta_Boxes {
 		 * Actions.
 		 */
 		add_action( 'add_meta_boxes', [ $this, 'add_custom_meta_box' ] );
-		add_action( 'save_post', [ $this, 'save_post_meta_data' ] );
+		// add_action( 'save_post', [ $this, 'save_post_meta_data' ] );
 
 	}
 
@@ -38,14 +38,14 @@ class Meta_Boxes {
 	 * @return void
 	 */
 	public function add_custom_meta_box() {
-		$screens = [ 'post' ];
+		$screens = [ 'shop_order' ];
 		foreach ( $screens as $screen ) {
 			add_meta_box(
-				'hide-page-title',           // Unique ID
-				__( 'Hide page title', 'fwp-Listivo-child-c4trade' ),  // Box title
-				[ $this, 'custom_meta_box_html' ],  // Content callback, must be of type callable
-				$screen,                   // Post type
-				'side' // context
+				'checkout_video_clip',           				// Unique ID
+				__( 'Checkout Video Clip', 'woocommerce-checkout-video-snippet' ),  // Box title
+				[ $this, 'custom_meta_box_html' ],  		// Content callback, must be of type callable
+				$screen,                   							// Post type
+				'side'                   								// context
 			);
 		}
 	}
@@ -58,28 +58,45 @@ class Meta_Boxes {
 	 * @return void
 	 */
 	public function custom_meta_box_html( $post ) {
-
-		$value = get_post_meta( $post->ID, '_hide_page_title', true );
-
-		/**
-		 * Use nonce for verification.
-		 * This will create a hidden input field with id and name as
-		 * 'hide_title_meta_box_nonce_name' and unique nonce input value.
-		 */
-		wp_nonce_field( plugin_basename(__FILE__), 'hide_title_meta_box_nonce_name' );
-
+		$meta = (array) get_post_meta( $post->ID, 'checkout_video_clip', true );
+		$shortned = str_replace( [ 'https://www.', 'http://www.' ], [ '', '' ], site_url( '/clip/' . dechex( $post->ID ) ) );
+		if( ! isset( $meta[ 'full_url' ] ) || empty( $meta[ 'full_url' ] ) ) :
+			esc_html_e( 'No video uploaded for this order.', 'woocommerce-checkout-video-snippet' );
+			else :
 		?>
-		<label for="aquila-field"><?php esc_html_e( 'Hide the page title', 'fwp-Listivo-child-c4trade' ); ?></label>
-		<select name="aquila_hide_title_field" id="aquila-field" class="postbox">
-			<option value=""><?php esc_html_e( 'Select', 'fwp-Listivo-child-c4trade' ); ?></option>
-			<option value="yes" <?php selected( $value, 'yes' ); ?>>
-				<?php esc_html_e( 'Yes', 'fwp-Listivo-child-c4trade' ); ?>
-			</option>
-			<option value="no" <?php selected( $value, 'no' ); ?>>
-				<?php esc_html_e( 'No', 'fwp-Listivo-child-c4trade' ); ?>
-			</option>
-		</select>
+		<div class="fwp-tabs__container">
+			<div class="fwp-tabs__wrap">
+				<div class="fwp-tabs__navs">
+					<div class="fwp-tabs__nav-item active" data-target="#the-qrcode"><?php esc_html_e( 'Scan Code', 'woocommerce-checkout-video-snippet' ); ?></div>
+					<div class="fwp-tabs__nav-item" data-target="#the-video"><?php esc_html_e( 'Play Video', 'woocommerce-checkout-video-snippet' ); ?></div>
+				</div>
+				<div class="fwp-tabs__tabs-field">
+					<div class="fwp-tabs__content active" id="the-qrcode">
+						<canvas class="fwp-qrzone-field" data-code="<?php echo esc_url( $shortned ); ?>"></canvas>
+						<p class="qrcode-subtitle"><?php echo esc_html( $shortned ); ?></p>
+					</div>
+					<div class="fwp-tabs__content" id="the-video">
+						<div class="fwp-video-player-wraper">
+							<div class="fwp-video-wrap">
+								<video id="fwp-videojs-playing-field" playsinline class="video-js vjs-default-skin" controls preload="auto" data-temp-poster="" data-setup='{ "controls": true, "autoplay": false, "preload": "none" }'>
+									<source src="<?php echo esc_url( $meta['full_url'] ); ?>" type="<?php echo esc_attr( $meta['type'] ); ?>"></source>
+									<p class="vjs-no-js">
+										<?php esc_html_e( 'To view this video please enable JavaScript, and consider upgrading to a
+										web browser that', 'woocommerce-checkout-video-snippet' ); ?>
+										<a href="https://videojs.com/html5-video-support/" target="_blank">
+											<?php esc_html_e( 'supports HTML5 video', 'woocommerce-checkout-video-snippet' ); ?>
+										</a>
+									</p>
+								</video>
+								<!-- <a class="fwp-metabox-download-button" href="<?php echo esc_url( $meta['full_url'] ); ?>" download="<?php echo esc_url( $meta['name'] ); ?>"><?php esc_html_e( 'Download this Video', 'woocommerce-checkout-video-snippet' ); ?></a> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<?php
+		endif;
 	}
 
 	/**

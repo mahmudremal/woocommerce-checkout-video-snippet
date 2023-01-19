@@ -59,7 +59,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Custom Category Slider', 'domain' );
+		return __( 'Custom Category Slider', 'woocommerce-checkout-video-snippet' );
 	}
 	/**
 	 * Retrieve the widget icon.
@@ -113,13 +113,13 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => __( 'Content', 'domain' ),
+				'label' => __( 'Content', 'woocommerce-checkout-video-snippet' ),
 			)
 		);
 		$this->add_control(
 			'show_view_all',
 			[
-				'label' => esc_html__('Display "View All" button', 'domain'),
+				'label' => esc_html__('Display "View All" button', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => '1',
 				'default' => '1',
@@ -128,11 +128,11 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'view_all_style',
 			[
-				'label' => esc_html__('Style', 'domain'),
+				'label' => esc_html__('Style', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'left' => esc_html__('Left', 'domain'),
-					'right' => esc_html__('Right', 'domain'),
+					'left' => esc_html__('Left', 'woocommerce-checkout-video-snippet'),
+					'right' => esc_html__('Right', 'woocommerce-checkout-video-snippet'),
 				],
 				'default' => 'left',
 				'condition' => [
@@ -143,9 +143,9 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'view_all_title',
 			[
-				'label'   => __( 'Heading Text', 'domain' ),
+				'label'   => __( 'Heading Text', 'woocommerce-checkout-video-snippet' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'Heading Text', 'domain' ),
+				'default' => __( 'Heading Text', 'woocommerce-checkout-video-snippet' ),
 				'condition' => [
 					'show_view_all' => '1',
 				]
@@ -154,7 +154,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'show_viewall_btn',
 			[
-				'label' => esc_html__('Show button', 'domain'),
+				'label' => esc_html__('Show button', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => '1',
 				'default' => '1',
@@ -163,7 +163,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'view_all_text',
 			[
-				'label' => esc_html__('View All Text', 'domain'),
+				'label' => esc_html__('View All Text', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::WYSIWYG, // Controls_Manager::TEXTAREA,
 				'default' => "Didn't find the right category?",
 				'condition' => [
@@ -174,9 +174,9 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'view_all_btntxt',
 			[
-				'label'   => __( 'Button Text', 'domain' ),
+				'label'   => __( 'Button Text', 'woocommerce-checkout-video-snippet' ),
 				'type'    => Controls_Manager::TEXT,
-				'default' => __( 'View all', 'domain' ),
+				'default' => __( 'View all', 'woocommerce-checkout-video-snippet' ),
 				'condition' => [
 					'show_view_all' => '1',
 				]
@@ -185,7 +185,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 			'view_all_link',
 			[
-				'label'   => __( 'View all button link', 'domain' ),
+				'label'   => __( 'View all button link', 'woocommerce-checkout-video-snippet' ),
 				'type'    => Controls_Manager::TEXT,
 				'default' => '',
 				'condition' => [
@@ -196,7 +196,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->add_control(
 				'view_all_image',
 				[
-						'label' => esc_html__('Image', 'domain'),
+						'label' => esc_html__('Image', 'woocommerce-checkout-video-snippet'),
 						'type' => Controls_Manager::MEDIA,
 						'condition' => [
 								'show_view_all' => '1',
@@ -217,14 +217,14 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_slider',
 			array(
-				'label' => __( 'Slider', 'domain' ),
+				'label' => __( 'Slider', 'woocommerce-checkout-video-snippet' ),
 			)
 		);
 		$repeater = new Repeater();
 		$repeater->add_control(
 			'image',
 			[
-				'label' => esc_html__('Image', 'domain'),
+				'label' => esc_html__('Image', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::MEDIA,
 				'default' => [
 					'url' => Utils::get_placeholder_image_src(),
@@ -234,30 +234,30 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$repeater->add_control(
 			'label',
 			[
-				'label' => esc_html__('Category Label', 'domain'),
+				'label' => esc_html__('Category Label', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Title Here', 'domain' ),
+				'placeholder' => __( 'Title Here', 'woocommerce-checkout-video-snippet' ),
 			]
 		);
 		$repeater->add_control(
 			'link',
 			[
-				'label' => esc_html__('Category URL', 'domain'),
+				'label' => esc_html__('Category URL', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __( 'Full URL of this category.', 'domain' ),
+				'placeholder' => __( 'Full URL of this category.', 'woocommerce-checkout-video-snippet' ),
 			]
 		);
 		$repeater->add_control(
 			'color',
 			[
-				'label' => esc_html__('Background Color', 'domain'),
+				'label' => esc_html__('Background Color', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::COLOR,
 			]
 		);
 		$this->add_control(
 			'categories',
 			[
-				'label' => esc_html__('Category Items', 'domain'),
+				'label' => esc_html__('Category Items', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::REPEATER,
 				'fields' => $repeater->get_controls(),
 				'prevent_empty' => false,

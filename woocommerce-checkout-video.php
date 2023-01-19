@@ -4,7 +4,7 @@
  *
  * @wordpress-plugin
  * Plugin Name:       WooCommerce Checkout Video
- * Plugin URI:        https://codeytek.com/aquila-features/
+ * Plugin URI:        https://github.com/mahmudremal/woocommerce-checkout-video-snippet/
  * Description:       Woocommerce endline order video integration plugin made with love by Remal Mahmud.
  * Version:           1.0.1
  * Requires at least: 5.2
@@ -13,13 +13,13 @@
  * Author URI:        https://github.com/mahmudremal/
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       woocommerce-checkout-video
+ * Text Domain:       woocommerce-checkout-video-snippet
  * Domain Path:       /languages
  * 
  * @package FWPWooCheckoutVideo
  * @author  Remal Mahmud (https://github.com/mahmudremal)
  * @version 1.0.1
- * @link https://github.com/mahmudremal/c4trade-listivo-directory-listing-project/
+ * @link https://github.com/mahmudremal/woocommerce-checkout-video-snippet/
  * @category	WooComerce Plugin
  * @copyright	Copyright (c) 2023-25
  * 

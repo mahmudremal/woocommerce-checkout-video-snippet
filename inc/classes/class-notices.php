@@ -28,7 +28,7 @@ class Notices {
 	}
 	private function notice() {
 		$args = [
-			// 'confirm'	=> __( 'Are you sure you want to disapear this message?', 'domain' ),
+			// 'confirm'	=> __( 'Are you sure you want to disapear this message?', 'woocommerce-checkout-video-snippet' ),
 			// 'request'	=> []
 		];
 		?>
@@ -40,15 +40,15 @@ class Notices {
 				</div>
 			</div>
 			<div class="fwp-notice__content">
-				<h3><?php esc_html_e('Congratulations! Love using this Plugin?.', 'domain'); ?></h3>
-				<p><?php esc_html_e('Become a super contributor by opting in to share non-sensitive plugin data and to receive periodic email updates from us.', 'domain') ?> <a href="#!" target="_blank"><?php esc_html_e('Learn more.', 'domain') ?></a>
+				<h3><?php esc_html_e('Congratulations! Love using this Plugin?.', 'woocommerce-checkout-video-snippet'); ?></h3>
+				<p><?php esc_html_e('Become a super contributor by opting in to share non-sensitive plugin data and to receive periodic email updates from us.', 'woocommerce-checkout-video-snippet') ?> <a href="#!" target="_blank"><?php esc_html_e('Learn more.', 'woocommerce-checkout-video-snippet') ?></a>
 			</p>
 			<div class="fwp-notice__actions">
 				<a href="#!" class="fwp-button">
-					<span><?php esc_html_e('Sure! I\'d love to help', 'domain') ?></span>
+					<span><?php esc_html_e('Sure! I\'d love to help', 'woocommerce-checkout-video-snippet') ?></span>
 				</a>
 				<a href="#!" class="fwp-button fwp-button__outline fwp-notice__cancel">
-					<span><?php esc_html_e('No thanks', 'domain') ?></span>
+					<span><?php esc_html_e('No thanks', 'woocommerce-checkout-video-snippet') ?></span>
 				</a>
 			</div>
 			</div>

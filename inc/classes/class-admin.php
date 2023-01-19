@@ -99,89 +99,89 @@ class Admin {
 		// is_FwpActive( 'key' )
 		$args = [];
 		$args['standard'] = [
-			'title'					=> __( 'General', 'domain' ),
-			'description'			=> __( 'Generel fields comst commonly used to changed.', 'domain' ),
+			'title'					=> __( 'General', 'woocommerce-checkout-video-snippet' ),
+			'description'			=> __( 'Generel fields comst commonly used to changed.', 'woocommerce-checkout-video-snippet' ),
 			'fields'				=> [
 				[
 					'id' 			=> 'fwp_bsp_enabled',
-					'label'					=> __( 'Enable Schedule posts', 'domain' ),
-					'description'			=> __( 'Mark to enable schedule posts features on Buddypress activity post.', 'domain' ),
+					'label'					=> __( 'Enable Schedule posts', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Mark to enable schedule posts features on Buddypress activity post.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],
 				[
 					'id' 			=> 'fwp_bsp_dashboardwidget',
-					'label'					=> __( 'Dashboard Widget', 'domain' ),
-					'description'			=> __( 'Show Scheduled Posts in Dashboard Widget.', 'domain' ),
+					'label'					=> __( 'Dashboard Widget', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Show Scheduled Posts in Dashboard Widget.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],
 				[
 					'id' 			=> 'fwp_bsp_posttimer',
-					'label'			=> __( 'CountDown timer', 'domain' ),
-					'description'	=> __( 'Enable timer on scheduled posts. This will show a countdown timer after post content with Days, Hour, Minutes and Seconds parameter.', 'domain' ),
+					'label'			=> __( 'CountDown timer', 'woocommerce-checkout-video-snippet' ),
+					'description'	=> __( 'Enable timer on scheduled posts. This will show a countdown timer after post content with Days, Hour, Minutes and Seconds parameter.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],
 				// [
 				// 	'id' 			=> 'fwp_bsp_defaultime',
-				// 	'label'			=> __( 'Default Time', 'domain' ),
-				// 	'description'	=> __( 'Set Default Schedule Time fro activity posts.', 'domain' ),
+				// 	'label'			=> __( 'Default Time', 'woocommerce-checkout-video-snippet' ),
+				// 	'description'	=> __( 'Set Default Schedule Time fro activity posts.', 'woocommerce-checkout-video-snippet' ),
 				// 	'type'			=> 'time',
 				// 	'default'		=> true
 				// ],
 				// [
 				// 	'id' 			=> 'fwp_bsp_hidepostnow',
-				// 	'label'			=> __( 'Post Immediately', 'domain' ),
-				// 	'description'	=> __( 'Hide Post Immediately or "post Update" button. If you check it, then buddypress default "post Update" button will be hidden.', 'domain' ),
+				// 	'label'			=> __( 'Post Immediately', 'woocommerce-checkout-video-snippet' ),
+				// 	'description'	=> __( 'Hide Post Immediately or "post Update" button. If you check it, then buddypress default "post Update" button will be hidden.', 'woocommerce-checkout-video-snippet' ),
 				// 	'type'			=> 'checkbox',
 				// 	'default'		=> false
 				// ],
 				[
 					'id' 			=> 'fwp_bsp_ondragconfirm',
-					'label'			=> __( 'Confirm on Drag', 'domain' ),
-					'description'	=> __( 'By enabling this option, users have to confirm on schedule date switching. If you disable this option, then users doesn\'t need any confirmation to do.', 'domain' ),
+					'label'			=> __( 'Confirm on Drag', 'woocommerce-checkout-video-snippet' ),
+					'description'	=> __( 'By enabling this option, users have to confirm on schedule date switching. If you disable this option, then users doesn\'t need any confirmation to do.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],
 			]
 		];
 		$args['notify'] = [
-			'title'					=> __( 'Notification', 'domain' ),
-			'description'			=> __( 'Setup notification information and function which should be enabled on reacting on Schedule posts. Also customize your notification text and additional informations.', 'domain' ),
+			'title'					=> __( 'Notification', 'woocommerce-checkout-video-snippet' ),
+			'description'			=> __( 'Setup notification information and function which should be enabled on reacting on Schedule posts. Also customize your notification text and additional informations.', 'woocommerce-checkout-video-snippet' ),
 			'fields'				=> [
 				[
 					'id' 			=> 'fwp_bsp_notifybuddypress',
-					'label'					=> __( 'Enable Schedule posts', 'domain' ),
-					'description'			=> __( 'Mark to enable schedule posts features on Buddypress activity post.', 'domain' ),
+					'label'					=> __( 'Enable Schedule posts', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Mark to enable schedule posts features on Buddypress activity post.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],
 				[
 					'id' 			=> 'fwp_bsp_notifydate-formate',
-					'label'					=> __( 'Date formate', 'domain' ),
-					'description'			=> __( 'Notification date formate which willl be replace withh notification default date formate. Don\'t forget to keep it in PHP date formate.', 'domain' ),
+					'label'					=> __( 'Date formate', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Notification date formate which willl be replace withh notification default date formate. Don\'t forget to keep it in PHP date formate.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'text',
 					'default'		=> 'M d, Y H:i A'
 				],
 				[
 					'id' 			=> 'fwp_bsp_notifypublish-text',
-					'label'					=> __( 'On Pulished Text', 'domain' ),
-					'description'			=> __( 'Notification title on activity post publish time. This is under translation. If you change it, you should review your translation to update it. Use {id} for Activity ID and {datetime} for activity scheduled published date.', 'domain' ),
+					'label'					=> __( 'On Pulished Text', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Notification title on activity post publish time. This is under translation. If you change it, you should review your translation to update it. Use {id} for Activity ID and {datetime} for activity scheduled published date.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'text',
 					'default'		=> 'Activity id {id} has been published on {datetime}.'
 				],
 				[
 					'id' 			=> 'fwp_bsp_notifypaused-text',
-					'label'					=> __( 'On Pulished Text', 'domain' ),
-					'description'			=> __( 'Notification title on activity post publish time. This is under translation. If you change it, you should review your translation to update it. Use {id} for Activity ID and {datetime} for activity scheduled published date.', 'domain' ),
+					'label'					=> __( 'On Pulished Text', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Notification title on activity post publish time. This is under translation. If you change it, you should review your translation to update it. Use {id} for Activity ID and {datetime} for activity scheduled published date.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'text',
 					'default'		=> 'Scheduled activity ({id}) saved successfully. Will publish on {datetime}.'
 				],
 				[
 					'id' 			=> 'fwp_bsp_notify-link',
-					'label'					=> __( 'Notification link', 'domain' ),
-					'description'			=> __( 'Kepp it enabled to have notification item link. Otherwise notification will be just a information notification without any link.', 'domain' ),
+					'label'					=> __( 'Notification link', 'woocommerce-checkout-video-snippet' ),
+					'description'			=> __( 'Kepp it enabled to have notification item link. Otherwise notification will be just a information notification without any link.', 'woocommerce-checkout-video-snippet' ),
 					'type'			=> 'checkbox',
 					'default'		=> true
 				],

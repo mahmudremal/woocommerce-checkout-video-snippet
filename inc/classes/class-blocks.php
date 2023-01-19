@@ -41,7 +41,7 @@ class Blocks {
 			[
 				[
 					'slug'  => 'aquila',
-					'title' => __( 'Aquila Blocks', 'fwp-Listivo-child-c4trade' ),
+					'title' => __( 'Aquila Blocks', 'woocommerce-checkout-video-snippet' ),
 					'icon'  => 'table-row-after',
 				],
 			]

@@ -40,12 +40,11 @@ class Assets {
 		// wp_register_style( 'slick-css', FWPWOOCHECKOUT_BUILD_LIB_URI . '/css/slick.css', [], false, 'all' );
 		// wp_register_style( 'slick-theme-css', FWPWOOCHECKOUT_BUILD_LIB_URI . '/css/slick-theme.css', ['slick-css'], false, 'all' );
 
-		wp_register_style( 'listivo', get_template_directory_uri() . '/style.css', [], $this->filemtime( get_template_directory() . '/style.css' ), 'all' );
-		wp_register_style( 'listivo-child', FWPWOOCHECKOUT_BUILD_CSS_URI . '/main.css', [ 'listivo' ], $this->filemtime( FWPWOOCHECKOUT_BUILD_CSS_DIR_PATH . '/main.css' ), 'all' );
+		wp_register_style( 'FWPWooCheckoutVideo', FWPWOOCHECKOUT_BUILD_CSS_URI . '/frontend.css', [], $this->filemtime( FWPWOOCHECKOUT_BUILD_CSS_DIR_PATH . '/frontend.css' ), 'all' );
+		wp_register_style( 'FWPWooCheckoutVideo-checkout', FWPWOOCHECKOUT_BUILD_CSS_URI . '/checkout.css', [], $this->filemtime( FWPWOOCHECKOUT_BUILD_CSS_DIR_PATH . '/checkout.css' ), 'all' );
 
 		// Enqueue Styles.
-		wp_enqueue_style( 'listivo' );
-		wp_enqueue_style( 'listivo-child' );
+		if( $this->allow_enqueue() ) {wp_enqueue_style( 'FWPWooCheckoutVideo' );wp_enqueue_style( 'FWPWooCheckoutVideo-checkout' );}
 
 		// wp_enqueue_style( 'bootstrap-css' );
 		// wp_enqueue_style( 'slick-css' );
@@ -56,13 +55,16 @@ class Assets {
 	public function register_scripts() {
 		// Register scripts.
 		// wp_register_script( 'slick-js', FWPWOOCHECKOUT_BUILD_LIB_URI . '/js/slick.min.js', ['jquery'], false, true );
-		wp_register_script( 'listivo-child', FWPWOOCHECKOUT_BUILD_JS_URI . '/main.js', ['jquery'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/main.js' ), true );
+		wp_register_script( 'FWPWooCheckoutVideo', FWPWOOCHECKOUT_BUILD_JS_URI . '/frontend.js', ['jquery'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/frontend.js' ), true );
+		wp_register_script( 'FWPWooCheckoutVideo-checkout', FWPWOOCHECKOUT_BUILD_JS_URI . '/checkout.js', ['FWPWooCheckoutVideo'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/checkout.js' ), true );
 		// wp_register_script( 'single-js', FWPWOOCHECKOUT_BUILD_JS_URI . '/single.js', ['jquery', 'slick-js'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/single.js' ), true );
 		// wp_register_script( 'author-js', FWPWOOCHECKOUT_BUILD_JS_URI . '/author.js', ['jquery'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/author.js' ), true );
 		// wp_register_script( 'bootstrap-js', FWPWOOCHECKOUT_BUILD_LIB_URI . '/js/bootstrap.min.js', ['jquery'], false, true );
 
 		// Enqueue Scripts.
-		wp_enqueue_script( 'listivo-child' );
+		// Both of is_order_received_page() and is_wc_endpoint_url( 'order-received' ) will work to check if you are on the thankyou page in the frontend.
+		if( $this->allow_enqueue() ) {wp_enqueue_script( 'FWPWooCheckoutVideo' );wp_enqueue_script( 'FWPWooCheckoutVideo-checkout' );}
+		
 		// wp_enqueue_script( 'bootstrap-js' );
 		// wp_enqueue_script( 'slick-js' );
 
@@ -75,11 +77,18 @@ class Assets {
 		// if ( is_author() ) {
 		// 	wp_enqueue_script( 'author-js' );
 		// }
+		// 
 
-		wp_localize_script( 'listivo-child', 'siteConfig', [
+		wp_localize_script( 'FWPWooCheckoutVideo', 'fwpSiteConfig', [
 			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-			'ajax_nonce' => wp_create_nonce( 'loadmore_post_nonce' ),
+			'ajax_nonce' => wp_create_nonce( 'futurewordpress_project_nonce' ),
+			'buildPath'  => FWPWOOCHECKOUT_BUILD_URI,
+			'sureToSubmit' => __( 'Want to submit it? Canbe retaken.', 'woocommerce-checkout-video-snippet' ),
+			'videoClips'		=> (array) WC()->session->get( 'checkout_video_clip' )
 		] );
+	}
+	private function allow_enqueue() {
+		return ( function_exists( 'is_checkout' ) && ( is_checkout() || is_order_received_page() || is_wc_endpoint_url( 'order-received' ) ) );
 	}
 
 	/**
@@ -130,16 +139,21 @@ class Assets {
 
 	}
 	public function admin_enqueue_scripts( $curr_page ) {
-		// if( ! in_array( $curr_page, [ 'edit-tags.php', 'term.php' ] ) ) {return;}
-		wp_register_style( 'FWPWOOCHECKOUTBackendCSS', FWPWOOCHECKOUT_BUILD_CSS_URI . '/admin.css', [], $this->filemtime( FWPWOOCHECKOUT_BUILD_CSS_DIR_PATH . '/admin.css' ), 'all' );
-		wp_register_script( 'FWPWOOCHECKOUTBackendJS', FWPWOOCHECKOUT_BUILD_JS_URI . '/admin.js', [ 'jquery' ], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/admin.js' ), true );
+		global $post;
+		if( ! in_array( $curr_page, [ 'edit.php', 'post.php' ] ) || 'shop_order' !== $post->post_type ) {return;}
+		wp_register_style( 'FWPWooCheckoutVideoBackendCSS', FWPWOOCHECKOUT_BUILD_CSS_URI . '/backend.css', [], $this->filemtime( FWPWOOCHECKOUT_BUILD_CSS_DIR_PATH . '/backend.css' ), 'all' );
+		wp_register_script( 'FWPWooCheckoutVideoBackendJS', FWPWOOCHECKOUT_BUILD_JS_URI . '/backend.js', [ 'jquery' ], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/backend.js' ), true );
+		// wp_register_script( 'FWPWooCheckoutVideoBackendJS-checkout', FWPWOOCHECKOUT_BUILD_JS_URI . '/checkout.js', ['FWPWooCheckoutVideoBackendJS'], $this->filemtime( FWPWOOCHECKOUT_BUILD_JS_DIR_PATH . '/checkout.js' ), true );
 		
-		wp_enqueue_style( 'FWPWOOCHECKOUTBackendCSS' );
-		wp_enqueue_script( 'FWPWOOCHECKOUTBackendJS' );
+		wp_enqueue_style( 'FWPWooCheckoutVideoBackendCSS' );
+		wp_enqueue_script( 'FWPWooCheckoutVideoBackendJS' );
+		// wp_enqueue_script( 'FWPWooCheckoutVideoBackendJS-checkout' );
 
-		wp_localize_script( 'FWPWOOCHECKOUTBackendJS', 'FWPsiteConfig', [
+		wp_localize_script( 'FWPWooCheckoutVideoBackendJS', 'fwpSiteConfig', [
 			'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-			// 'ajax_nonce' => wp_create_nonce( 'futurewordpress_project_nonce' ),
+			'ajax_nonce' => wp_create_nonce( 'futurewordpress_project_nonce' ),
+			'buildPath'  => FWPWOOCHECKOUT_BUILD_URI,
+			'sureToSubmit' => __( 'Want to submit it? Canbe retaken.', 'woocommerce-checkout-video-snippet' ),
 		] );
 	}
 	private function filemtime( $file ) {

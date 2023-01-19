@@ -41,7 +41,7 @@ use FWPWOOCHECKOUT_THEME\Inc\Traits\Singleton;
 	public function register_sidebars() {
 		register_sidebar(
 			[
-				'name'          => esc_html__( 'Sidebar', 'fwp-Listivo-child-c4trade' ),
+				'name'          => esc_html__( 'Sidebar', 'woocommerce-checkout-video-snippet' ),
 				'id'            => 'sidebar-1',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget widget-sidebar %2$s">',
@@ -52,7 +52,7 @@ use FWPWOOCHECKOUT_THEME\Inc\Traits\Singleton;
 		);
 		register_sidebar(
 			[
-				'name'          => esc_html__( 'Footer', 'fwp-Listivo-child-c4trade' ),
+				'name'          => esc_html__( 'Footer', 'woocommerce-checkout-video-snippet' ),
 				'id'            => 'sidebar-2',
 				'description'   => '',
 				'before_widget' => '<div id="%1$s" class="widget widget-footer cell column %2$s">',

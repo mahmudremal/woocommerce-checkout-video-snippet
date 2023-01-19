@@ -1,6 +1,7 @@
-import './frontend';
-import './frontend/map';
-// import './posts/loadmore';
+import './frontend/index';
+// import './frontend/map';
+// import './modules/dropzone';
+// import './modules/videojs';
 
 // Styles
 import '../sass/main.scss';

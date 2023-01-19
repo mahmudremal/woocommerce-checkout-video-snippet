@@ -5,8 +5,8 @@ import { __ } from '@wordpress/i18n';
 ( function ( $ ) {
 	class FWProject_Buttons {
 		constructor() {
-			this.ajaxUrl = FWPsiteConfig?.ajaxUrl ?? '';
-			this.ajaxNonce = FWPsiteConfig?.ajax_nonce ?? '';
+			this.ajaxUrl = fwpSiteConfig?.ajaxUrl ?? '';
+			this.ajaxNonce = fwpSiteConfig?.ajax_nonce ?? '';
       this.btnSwitch();
 			// 01775898205
 			// Best Friend
@@ -21,7 +21,7 @@ import { __ } from '@wordpress/i18n';
             if( false !== ( ev = e.dataset.events ) && ( ! e.dataset.disabled || e.dataset.disabled == 'false' ) ) {
               thisClass.beforeEffect( e );
               go = true;ev = JSON.parse( ev );// console.log( ev );
-              if( ev.confirm && ! confirm( __( 'Are you sure you want to switch this listing status?', 'domain' ) ) ) {
+              if( ev.confirm && ! confirm( __( 'Are you sure you want to switch this listing status?', 'woocommerce-checkout-video-snippet' ) ) ) {
                 go = false;thisClass.afterEffect( e );
               }
               if( ev.request && ev.request.action && ev.request.action != '' && go ) {

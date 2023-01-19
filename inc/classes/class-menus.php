@@ -20,8 +20,8 @@ class Menus {
 	}
 	public function register_menus() {
 		register_nav_menus([
-			'aquila-header-menu' => esc_html__( 'Header Menu', 'fwp-Listivo-child-c4trade' ),
-			'aquila-footer-menu' => esc_html__( 'Footer Menu', 'fwp-Listivo-child-c4trade' ),
+			'aquila-header-menu' => esc_html__( 'Header Menu', 'woocommerce-checkout-video-snippet' ),
+			'aquila-footer-menu' => esc_html__( 'Footer Menu', 'woocommerce-checkout-video-snippet' ),
 		]);
 	}
 	/**

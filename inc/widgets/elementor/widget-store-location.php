@@ -59,7 +59,7 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return __( 'Store Location', 'domain' );
+		return __( 'Store Location', 'woocommerce-checkout-video-snippet' );
 	}
 	/**
 	 * Retrieve the widget icon.
@@ -113,13 +113,13 @@ class Widgets_CustomCategory extends \Elementor\Widget_Base {
 		$this->start_controls_section(
 			'section_content',
 			array(
-				'label' => __( 'Content', 'domain' ),
+				'label' => __( 'Content', 'woocommerce-checkout-video-snippet' ),
 			)
 		);
 		$this->add_control(
 			'show_the_map',
 			[
-				'label' => esc_html__('Enable Map', 'domain'),
+				'label' => esc_html__('Enable Map', 'woocommerce-checkout-video-snippet'),
 				'type' => Controls_Manager::SWITCHER,
 				'return_value' => '1',
 				'default' => '1',

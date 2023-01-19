@@ -56,3 +56,32 @@
 	-webkit-box-orient: vertical;
 	overflow: hidden;
 }
+
+@mixin background($imgpath,$position:0 0,$repeat: no-repeat) {
+	background: {
+		image: url($imgpath);
+		position: $position;
+		repeat: $repeat;
+	}
+}
+// .testing {
+// 	@include background('/my/img/path.png');
+// }
+
+@mixin backgroundShorthand($imgpath,$position:0 0,$repeat: no-repeat) {
+	background: transparent url(#{$imgpath}) $repeat $position;
+}
+// .testing2 {
+// 	@include backgroundShorthand('/my/img/path.png');
+// }
+
+@mixin background-image($image, $position: center, $color: transparent) {
+	// background-image: url('#{$path--rel}/#{$img}');
+	background-image: url($image);
+	background-repeat: no-repeat;
+	background-position: $position;
+	background-color: $color ;
+}
+// .navbar-inverse {
+//   @include background-image("header.png", right, $black); 
+// }

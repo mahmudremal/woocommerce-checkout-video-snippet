@@ -47,3 +47,17 @@
     visibility: visible;
   }
 }
+.fwp-video-player-wraper {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: block;
+  position: relative;
+  max-width: 400px;
+}
+
+.fwp-videojs-record-field, .fwp-videojs-playing-field {
+  width: 100%;
+  // min-height: 99%;
+  max-height: 100%;
+}
